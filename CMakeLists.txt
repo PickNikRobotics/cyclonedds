@@ -39,6 +39,8 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake/Modules")
 option(BUILD_IDLC "Build IDL preprocessor" ${not_crosscompiling})
 option(BUILD_DDSPERF "Build ddsperf tool" ${not_crosscompiling})
 
+option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
+
 set(CMAKE_C_STANDARD 99)
 if(CMAKE_SYSTEM_NAME STREQUAL "VxWorks")
   add_definitions(-std=c99)
