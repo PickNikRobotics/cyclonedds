@@ -37,6 +37,7 @@ if(MSVC)
   # ignore warnings C6255 and 6263 about _alloca
   target_compile_options(idlc PRIVATE /wd6255 /wd6263)
 endif()
+add_dependencies(idlc ddsc)
 target_link_libraries(idlc PRIVATE compat idl idlpp ddsc ddsrt ${CMAKE_DL_LIBS})
 target_include_directories(
   idlc PRIVATE
