@@ -36,8 +36,7 @@ option(WERROR "Treat compiler warnings as errors" OFF)
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake/Modules")
 
-# option(BUILD_IDLC "Build IDL preprocessor" ${not_crosscompiling})
-option(BUILD_IDLC "Build IDL preprocessor" OFF)
+option(BUILD_IDLC "Build IDL preprocessor" ${not_crosscompiling})
 option(BUILD_DDSPERF "Build ddsperf tool" ${not_crosscompiling})
 
 set(CMAKE_C_STANDARD 99)
@@ -303,6 +302,18 @@ set(generated_cyclonedds_rnc "${CMAKE_CURRENT_SOURCE_DIR}/etc/cyclonedds.rnc")
 set(generated_cyclonedds_xsd "${CMAKE_CURRENT_SOURCE_DIR}/etc/cyclonedds.xsd")
 set(generated_options_md     "${CMAKE_CURRENT_SOURCE_DIR}/docs/manual/options.md")
 set(generated_defconfig_src  "${CMAKE_CURRENT_SOURCE_DIR}/src/core/ddsi/defconfig.c")
+
+message("Printing all cache variables:")
+get_cmake_property(vars CACHE_VARIABLES)
+foreach(var ${vars})
+  message("${var}=${${var}}")
+endforeach()
+
+message("Printing all variables:")
+get_cmake_property(all_vars VARIABLES)
+foreach(var ${all_vars})
+  message("${var}=${${var}}")
+endforeach()
 
 add_subdirectory(compat)
 add_subdirectory(src)
