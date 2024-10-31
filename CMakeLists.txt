@@ -12,6 +12,11 @@
 cmake_minimum_required(VERSION 3.16)
 project(CycloneDDS VERSION 0.10.4 LANGUAGES C)
 
+set(LINKER_FLAGS_LIST CMAKE_EXE_LINKER_FLAGS CMAKE_SHARED_LINKER_FLAGS CMAKE_MODULE_LINKER_FLAGS)
+foreach(LINKER_FLAG ${LINKER_FLAGS_LIST})
+  string(REPLACE "-fuse-ld=lld" "-fuse-ld=bfd" ${LINKER_FLAG} "${${LINKER_FLAG}}")
+endforeach()
+
 # Set a default build type if none was specified
 set(default_build_type "RelWithDebInfo")
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
